@@ -25,8 +25,9 @@ public class FileUploadUtils {
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			// 解析请求
 			List<FileItem> items = upload.parseRequest(req);
-//			upload.setSizeMax(1024 * 50);
-			upload.setFileSizeMax(1024 * 50);
+			// 单个文件大小不能超过50kb
+			upload.setSizeMax(1024 * 50);
+//			upload.setFileSizeMax(1024 * 50);
 			for (FileItem fileItem : items) {
 				// 判断空间是否是普通控件
 				if (fileItem.isFormField()) {
